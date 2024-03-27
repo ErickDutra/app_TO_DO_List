@@ -11,13 +11,17 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(
-              decoration: BoxDecoration(color: Colors.green),
-              child: Container(
-                child: Center(
-                  child: Text("To do List"),
+            ListTile(
+              title: Container(
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(10)
                 ),
-              )),
+                child: Center(
+                  child: Text('Todo List'),
+                ), 
+              ),
+            ),
               ListTile(
             title: Row(
               children: [
