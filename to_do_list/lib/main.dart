@@ -16,12 +16,15 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: HomePage());
+        home: const HomePage());
   }
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -29,11 +32,38 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer:MyDrawer(),
-      appBar: AppBar(
-        title: Text('All tasks'),
-      ),
-    );
+        drawer: MyDrawer(),
+        appBar: AppBar(
+          title: const Text('All tasks'),
+        ),
+        body: ButtonAddict());
   }
 }
 
+class ButtonAddict extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return  Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                margin: EdgeInsets.all(8),
+                child: IconButton(
+                    style: ButtonStyle(
+                      shadowColor: MaterialStateProperty.all<Color>(Colors.black),
+                      elevation: MaterialStateProperty.all<double>(5.0),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.green), // Defina  cor de fundo desejada aqui
+                    ),
+                    onPressed: () {},
+                    icon: Icon(Icons.add)),
+              ),
+            ],
+          ),
+        ],
+    );
+  }
+}
