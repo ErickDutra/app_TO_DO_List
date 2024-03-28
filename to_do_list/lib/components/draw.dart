@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list/components/tasks_day.dart';
 import 'package:to_do_list/components/tasks_month.dart';
 import 'package:to_do_list/components/tasks_week.dart';
 import 'package:to_do_list/components/tasks_year.dart';
@@ -32,23 +31,8 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => HomePage()));
-            },
-          ),
-          Divider(color: Colors.black38),
-          ListTile(
-            title: Row(
-              children: [
-                Container(
-                    margin: EdgeInsets.all(8),
-                    child: Icon(Icons.calendar_view_day)),
-                Text("- Day"),
-              ],
-            ),
-            onTap: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => TasksDay()));
             },
           ),
           Divider(color: Colors.black38),
@@ -62,7 +46,7 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => TasksWeek()));
             },
           ),
@@ -77,7 +61,7 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) =>TasksMonth()));
             },
           ),
@@ -92,7 +76,7 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => TasksYear()));
             },
           ),

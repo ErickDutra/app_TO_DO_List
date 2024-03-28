@@ -12,7 +12,7 @@ class DbTasks {
            CREATE TABLE IF NOT EXISTS db_tasks(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             titulo TEXT NOT NULL,
-            day BOOLEAN,
+            week BOOLEAN,
             month BOOLEAN,
             year BOOLEAN,
             data TEXT,
@@ -28,5 +28,10 @@ class DbTasks {
     final db = await DbTasks.database();
     await db.insert(table, data,
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
+  }
+
+  static Future<List<Map<String, dynamic>>> getData(String table) async {
+    final db = await DbTasks.database();
+    return db.query(table);
   }
 }

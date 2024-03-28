@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/components/addict_page.dart';
 import 'package:to_do_list/components/draw.dart';
 
 void main() {
@@ -40,30 +41,5 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class ButtonAddict extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return  Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                margin: EdgeInsets.all(8),
-                child: IconButton(
-                    style: ButtonStyle(
-                      shadowColor: MaterialStateProperty.all<Color>(Colors.black),
-                      elevation: MaterialStateProperty.all<double>(5.0),
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Colors.green), // Defina  cor de fundo desejada aqui
-                    ),
-                    onPressed: () {},
-                    icon: Icon(Icons.add)),
-              ),
-            ],
-          ),
-        ],
-    );
-  }
-}
+
+
