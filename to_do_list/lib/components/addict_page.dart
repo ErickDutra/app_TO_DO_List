@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_list/provider/tasks_places.dart';
 
 class AddictPage extends StatefulWidget {
   @override
@@ -11,17 +13,37 @@ class _AddictPageState extends State<AddictPage> {
   bool _isMonth = false;
   bool _isYear = false;
 
+  final _titleController = TextEditingController();
+  final _descriptionController = TextEditingController();
+
+  void _submitForm() {
+    if (_isWeek && _isMonth && _isYear == false) {
+      return;
+    }
+
+    if (_titleController.text.isEmpty) {
+      return;
+    }
+
+    Provider.of<TasksPlaces>(context, listen: false)
+        .addItem(_titleController.text, _descriptionController.text, selectedDate, _isWeek, _isMonth, _isYear);
+
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
           TextField(
+            controller: _titleController,
             decoration: InputDecoration(
               labelText: 'Título',
             ),
           ),
           TextField(
+            controller: _descriptionController,
             decoration: InputDecoration(
               labelText: 'Description',
             ),
@@ -89,7 +111,7 @@ class _AddictPageState extends State<AddictPage> {
                   }
                 },
               ),
-              ElevatedButton(onPressed: (){}, child:Text('Save'))
+              ElevatedButton(onPressed: _submitForm, child: Text('Save'))
             ],
           )
         ],

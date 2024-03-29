@@ -3,7 +3,7 @@ import 'package:path/path.dart' as path;
 
 class DbTasks {
   static Future<sql.Database> database() async {
-    const tableName = 'db_tasks';
+
     final dbPath = await sql.getDatabasesPath();
     return sql.openDatabase(
       path.join(dbPath, 'todos.db'),
