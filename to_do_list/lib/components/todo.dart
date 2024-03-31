@@ -1,11 +1,11 @@
 class Task {
-  final int id;
-  final String title;
-  final bool week;
-  final bool month;
-  final bool year;
-  final DateTime data;
-  final String description;
+  final int? id;
+  final String? title;
+  final int? week;
+  final int? month;
+  final int? year;
+  final DateTime? data;
+  final String? description;
 
   Task({
     required this.id,

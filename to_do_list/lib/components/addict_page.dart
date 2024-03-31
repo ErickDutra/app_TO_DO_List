@@ -25,7 +25,7 @@ class _AddictPageState extends State<AddictPage> {
       return;
     }
 
-    Provider.of<TasksPlaces>(context, listen: false)
+    Provider.of<TaskProvider>(context, listen: false)
         .addItem(_titleController.text, _descriptionController.text, selectedDate, _isWeek, _isMonth, _isYear);
 
     Navigator.of(context).pop();
