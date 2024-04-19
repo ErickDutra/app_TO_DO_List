@@ -14,9 +14,6 @@ class TaskProvider with ChangeNotifier {
               id: item['id'],
               title: item['title'],
               description: item['description'],
-              week: item['week'],
-              month: item['month'],
-              year: item['year'],
               data: DateTime.parse(item['data']),
             ))
         .toList();
@@ -39,30 +36,32 @@ class TaskProvider with ChangeNotifier {
     return _items[index];
   }
 
+  void removeItem(Task item) {
+    _items.remove(item);
+    DbTasks.delete('tasks', item.id);
+    notifyListeners();
+  }
+
   void addItem(String title, String description, DateTime time, bool isweek,
       bool ismonth, bool isyear) {
     final newItem = Task(
       id: Random().nextInt(30000),
       title: title,
       description: description,
-      week: isweek ? 1 : 0,
-      month: ismonth ? 1 : 0,
-      year: isyear ? 1 : 0,
       data: DateTime.now(),
     );
 
     _items.add(newItem);
-    DbTasks.insert('todos', {
+    DbTasks.insert('tasks', {
       'id': newItem.id,
       'title': newItem.title,
       'description': newItem.description,
-      'week': newItem.week,
-      'month': newItem.month,
-      'year': newItem.year,
       'data': newItem.data.toString()
     });
-    print('aqui additem');
     notifyListeners();
   }
+
+ 
+
 
 }

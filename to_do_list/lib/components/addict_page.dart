@@ -9,24 +9,26 @@ class AddictPage extends StatefulWidget {
 
 class _AddictPageState extends State<AddictPage> {
   DateTime selectedDate = DateTime.now();
-  bool _isWeek = false;
-  bool _isMonth = false;
-  bool _isYear = false;
+
 
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
 
   void _submitForm() {
-    if (_isWeek && _isMonth && _isYear == false) {
-      return;
-    }
+    final _date = selectedDate;
 
     if (_titleController.text.isEmpty) {
       return;
     }
 
-    Provider.of<TaskProvider>(context, listen: false)
-        .addItem(_titleController.text, _descriptionController.text, selectedDate, _isWeek, _isMonth, _isYear);
+    Provider.of<TaskProvider>(context, listen: false).addItem(
+        _titleController.text,
+        _descriptionController.text,
+        _date,
+        false,
+        false,
+        false
+        );
 
     Navigator.of(context).pop();
   }
@@ -47,50 +49,6 @@ class _AddictPageState extends State<AddictPage> {
             decoration: InputDecoration(
               labelText: 'Description',
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Text('Week'),
-                  Checkbox(
-                    value: _isWeek,
-                    onChanged: (value) {
-                      setState(() {
-                        _isWeek = value!;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text('Month'),
-                  Checkbox(
-                    value: _isMonth,
-                    onChanged: (value) {
-                      setState(() {
-                        _isMonth = value!;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text('Year'),
-                  Checkbox(
-                    value: _isYear,
-                    onChanged: (value) {
-                      setState(() {
-                        _isYear = value!;
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

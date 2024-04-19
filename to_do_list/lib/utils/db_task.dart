@@ -37,4 +37,13 @@ class DbTasks {
     final db = await DbTasks.database();
     return db.query(table);
   }
+
+  static Future<void> delete(String s, int? id) async {
+    final db = await DbTasks.database();
+    await db.delete(
+      "todos",
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }
